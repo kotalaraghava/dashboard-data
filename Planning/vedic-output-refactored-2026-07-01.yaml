@@ -1,0 +1,63 @@
+# Vedic Daily Output — Refactored Architecture
+# Generated from independent Step 1 (Jyotish/BPHS) + Step 2 (Ayurveda/Deshacharya)
+# Date: 2026-07-01
+
+---
+
+# ============ STEP 1: PANCHANG (Jyotish / BPHS) ============
+# Astronomical data from ephem library + Lahiri ayanamsha
+# Output namespace: PANCHANG_*
+
+panchang:
+  date_ymd: "2026-07-01"
+  date_display: "Wednesday, July 01, 2026"
+  day_num: 3
+  day_san: "Budhavara"
+  lord: "Budha/Vata"
+  sunrise: "5:53 AM"
+  sunset: "6:53 PM"
+  moonrise: "8:01 PM"
+  rahu: "12:23 PM–2:00 PM"
+  yama: "7:30 AM–9:08 AM"
+  gulika: "10:45 AM–12:23 PM"
+  abhijit: "11:59 AM–12:47 PM"
+  surya_rashi: "Mithuna"
+  surya_effect: "Budha's domain — Mithuna: communication, intellect, writing. Vata aggravation in Grisma; grounding advised."
+  tithi: "Purnima/Amavasya (2)"
+  paksha: "Krishna Paksha"
+  nakshatra: "Uttara Ashadha"
+  chandra_effect: "Purva Ashadha — invincibility, mystery. Waning phase: introspection, preparation. Krishna Paksha: inward focus, completion cycles. Avoid major external initiatives."
+  days_to_full: 29
+  days_to_new: 14
+
+# ============ STEP 2: RTU (Ayurveda / Ashtanga Hridayam) ============
+# Weather-based seasonal determination via Deshacharya principle
+# Output namespace: RTU_*
+# Note: Step 2 runs independently; no input from Step 1
+
+rtu:
+  rtu: "Grisma"
+  phase: "Sthiti"
+  start_date: "2026-03-15"
+  end_date: "2026-05-31"
+  agni_state: "Weak"
+  confidence: "High"
+  temp_c: 34.2
+  humidity_pct: 42
+  wind_degrees: 180
+  rainy_days_14: 0
+  deshacharya_note: "Surya in Mithuna (base) + weather confirm Grisma"
+  
+  # Dosha effects — generated from RTU + weather data
+  vata_effect: "Dry, hot conditions (34.2°C, 42% humidity) aggravate Vata; warm, unctuous foods and grounding practices essential."
+  pitta_effect: "Peak heat in Grisma (34.2°C, wind 180°) intensifies Pitta; cooling, sweet, liquid sustenance critical."
+  kapha_effect: "Grisma heat and dryness (0 rain, 42% humidity) balance Kapha's heaviness; light, warm practices beneficial."
+
+# ============ ARCHITECTURE NOTE ============
+# Step 1 & Step 2 are INDEPENDENT
+# - Step 1 runs astronomical calculations (ephem)
+# - Step 2 runs weather validation (OpenMeteo + Deshacharya)
+# - Step 3 merges outputs into daily note frontmatter
+# No data flows between Step 1 & 2 — clean separation of concerns
+
+---
