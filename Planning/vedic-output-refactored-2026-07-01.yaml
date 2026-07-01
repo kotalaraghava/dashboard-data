@@ -31,6 +31,8 @@ rtu: "Varsha"
 rtu_phase: "Arambha"
 agni_state: "Vishama"
 rtu_confidence: "High"
+rtu_start_date: "2026-06-15"
+rtu_end_date: "2026-09-15"
 temp_c: 25.0
 humidity_pct: 67
 wind_degrees: 256
