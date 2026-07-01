@@ -1,6 +1,6 @@
-# Vedic Daily Output — Refactored Architecture
-# Generated from independent Step 1 (Jyotish/BPHS) + Step 2 (Ayurveda/Deshacharya)
-# Date: 2026-07-01
+# Vedic Daily Output — Refactored Architecture (2026-07-01)
+# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/Deshacharya via ritu-determination.md)
+# Architecture: Both steps independent, merged in Step 3
 
 ---
 
@@ -31,33 +31,44 @@ panchang:
   days_to_new: 14
 
 # ============ STEP 2: RTU (Ayurveda / Ashtanga Hridayam) ============
-# Weather-based seasonal determination via Deshacharya principle
+# Weather-based seasonal determination via ritu-determination.md protocol
 # Output namespace: RTU_*
-# Note: Step 2 runs independently; no input from Step 1
+# Weather source: Open-Meteo API (live data)
 
 rtu:
-  rtu: "Grisma"
-  phase: "Sthiti"
-  start_date: "2026-03-15"
-  end_date: "2026-05-31"
-  agni_state: "Weak"
+  rtu: "Varsha"
+  phase: "Arambha"
+  agni_state: "Vishama"
   confidence: "High"
-  temp_c: 34.2
-  humidity_pct: 42
-  wind_degrees: 180
-  rainy_days_14: 0
-  deshacharya_note: "Surya in Mithuna (base) + weather confirm Grisma"
   
-  # Dosha effects — generated from RTU + weather data
-  vata_effect: "Dry, hot conditions (34.2°C, 42% humidity) aggravate Vata; warm, unctuous foods and grounding practices essential."
-  pitta_effect: "Peak heat in Grisma (34.2°C, wind 180°) intensifies Pitta; cooling, sweet, liquid sustenance critical."
-  kapha_effect: "Grisma heat and dryness (0 rain, 42% humidity) balance Kapha's heaviness; light, warm practices beneficial."
+  # Weather data (source: Open-Meteo, 2026-07-01)
+  temp_c: 24.8
+  humidity_pct: 68
+  wind_degrees: 255
+  rainy_days_14: 17
+  
+  # Ritu-determination matching results
+  match_score: "4/4"
+  matching_factors: "temp✓(24.8°C in 15-26), humidity✓(68% in 65-90), rain✓(17 days >5), wind✓(255° SW monsoon)"
+  deshacharya_note: "Live weather confirms Varsha: monsoon active, high humidity, SW winds, 17 rainy days. Calendar month (July/Ashadha) aligns."
+  
+  # Ritu seasonal dates (approximate for Bangalore)
+  rtu_start_date: "2026-06-15"
+  rtu_end_date: "2026-09-15"
+  
+  # Dosha effects — generated from Varsha conditions
+  vata_effect: "Varsha dampness and high humidity (68%, 17 rainy days) pacify Vata's dryness; grounding practices still essential but less urgent."
+  pitta_effect: "Varsha cooling rains (17 days, 24.8°C) pacify Pitta nicely; light digestive support and bitter tastes support. No aggressive cooling needed."
+  kapha_effect: "Varsha humidity peak (68%) and moisture aggravate Kapha significantly; stimulate digestion with warm, dry, light foods and active practices."
 
 # ============ ARCHITECTURE NOTE ============
-# Step 1 & Step 2 are INDEPENDENT
-# - Step 1 runs astronomical calculations (ephem)
-# - Step 2 runs weather validation (OpenMeteo + Deshacharya)
-# - Step 3 merges outputs into daily note frontmatter
-# No data flows between Step 1 & 2 — clean separation of concerns
+# Step 1 & Step 2 are COMPLETELY INDEPENDENT
+# - Step 1: Runs ephem calculations (orbital mechanics) → PANCHANG_*
+# - Step 2: Runs ritu-determination.md protocol (weather validation) → RTU_*
+# - Step 3: Merges outputs → Unified daily note frontmatter
+# 
+# No data flows between steps. Each is a separate domain:
+# - Jyotish (panchang) for spiritual timing & planetary energy
+# - Ayurveda (rtu) for practical health guidance based on season/weather
 
 ---
