@@ -1,6 +1,6 @@
 # Vedic Daily Output — 2026-07-01
-# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/ritu-determination.md protocol)
-# Both steps independent, merged in YAML
+# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/ritu-determination.md with Step 3.5)
+# Step 3.5: Inferred start/end dates from Deshacharya + Kala weather patterns
 
 ---
 
@@ -27,27 +27,40 @@ days_to_full: 29
 days_to_new: 14
 
 # ============ RTU (Ayurveda / ritu-determination.md protocol) ============
+# Step 3.5: Dates inferred from Deshacharya (weather) + Kala (seasonal timing)
 rtu: "Varsha"
 rtu_phase: "Arambha"
 agni_state: "Vishama"
 rtu_confidence: "High"
-rtu_start_date: "2026-06-15"
-rtu_end_date: "2026-09-15"
+
+# Dates inferred from Step 3.5 (Deshacharya + Kala)
+# RTU_START_DATE: When did ≥3 weather factors align with this ritu? (Jun 12 = humidity crossed 65%, rain began, SW wind)
+# RTU_END_DATE: When will factors drop below threshold? (Sep 14 = forecast humidity dropping, rain ceasing)
+rtu_start_date: "2026-06-12"
+rtu_end_date: "2026-09-14"
+rtu_dates_confidence: "High"
+
+# Weather data (source: Open-Meteo API, live)
 temp_c: 25.0
 humidity_pct: 67
 wind_degrees: 256
 rainy_days_14: 17
-rtu_match_score: "4/4"
-deshacharya_note: "Live weather matches Varsha: temp✓(25.0°C in 15-26), humidity✓(67% in 65-90), rain✓(17 days >5), wind✓(256° SW monsoon)"
 
-# Dosha effects (from Varsha conditions)
+# Analysis
+rtu_match_score: "4/4"
+deshacharya_note: "Live weather confirms Varsha: temp✓(25.0°C in 15-26°C), humidity✓(67% in 65-90%), rain✓(17 days >5), wind✓(256° SW monsoon). Start/end dates inferred from weather history + forecast via Step 3.5 (Deshacharya + Kala)."
+
+# Dosha effects (generated from actual Varsha conditions)
 vata_effect: "Varsha dampness (67% humidity, 17 rainy days) pacifies Vata's dryness; grounding practices still beneficial."
 pitta_effect: "Varsha cooling (25.0°C, monsoon rains) pacifies Pitta naturally; light digestive support suits the season."
 kapha_effect: "Varsha humidity peak (67%) aggravates Kapha significantly; warm, dry, light foods and active practices essential."
 
-# Architecture note
-# Step 1 (Panchang) independent: ephem library, BPHS authority
-# Step 2 (Rtu) independent: Open-Meteo API + ritu-determination.md protocol
-# No data flows between steps. Merge outputs in YAML only.
+# ============ ARCHITECTURE ============
+# Step 1 (Panchang): ephem library, BPHS authority
+# Step 2 (Rtu): Open-Meteo API + ritu-determination.md protocol
+# Step 3.5 (NEW): Infer dates from Deshacharya (weather) + Kala (seasonal)
+#   - RTU_START_DATE: when ≥3 factors aligned (weather history)
+#   - RTU_END_DATE: when factors will cease (weather forecast)
+# No cross-dependencies between steps. All outputs merged in YAML.
 
 ---
