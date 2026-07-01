@@ -1,12 +1,16 @@
 # Vedic Daily Output — 2026-07-01
-# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/ritu-determination.md with Step 3.5)
-# Step 3.5: Inferred start/end dates from Deshacharya + Kala weather patterns
+# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/ritu-determination.md) + Step 3 (Synthesis)
 
 ---
 
-# ============ PANCHANG (Jyotish / BPHS) ============
+todays_wisdom: "Kapha is aggravated in this Varsha humidity — keep digestion light and movement steady. Waning Krishna Paksha favors withdrawal; anchor today in one sustained prāṇāyāma sitting rather than scattered tasks. Uttara Ashadha's invincible quality with inward Paksha-focus suggests depth: let sva-dhyāya (self-study) after Aditya Hrudayam be your dhāraṇā anchor."
+
 date: "2026-07-01"
 date_display: "Wednesday, July 01, 2026"
+sankalpa: ""
+tags: [daily]
+
+# ============ PANCHANG (Jyotish / BPHS) ============
 day_num: 3
 day_san: "Budhavara"
 lord: "Budha/Vata"
@@ -27,15 +31,11 @@ days_to_full: 29
 days_to_new: 14
 
 # ============ RTU (Ayurveda / ritu-determination.md protocol) ============
-# Step 3.5: Dates inferred from Deshacharya (weather) + Kala (seasonal timing)
+# Step 3 (Synthesis): Dates inferred from Deshacharya (weather) + Kala (seasonal timing)
 rtu: "Varsha"
 rtu_phase: "Arambha"
 agni_state: "Vishama"
 rtu_confidence: "High"
-
-# Dates inferred from Step 3.5 (Deshacharya + Kala)
-# RTU_START_DATE: When did ≥3 weather factors align with this ritu? (Jun 12 = humidity crossed 65%, rain began, SW wind)
-# RTU_END_DATE: When will factors drop below threshold? (Sep 14 = forecast humidity dropping, rain ceasing)
 rtu_start_date: "2026-06-12"
 rtu_end_date: "2026-09-14"
 rtu_dates_confidence: "High"
@@ -58,9 +58,7 @@ kapha_effect: "Varsha humidity peak (67%) aggravates Kapha significantly; warm, 
 # ============ ARCHITECTURE ============
 # Step 1 (Panchang): ephem library, BPHS authority
 # Step 2 (Rtu): Open-Meteo API + ritu-determination.md protocol
-# Step 3.5 (NEW): Infer dates from Deshacharya (weather) + Kala (seasonal)
-#   - RTU_START_DATE: when ≥3 factors aligned (weather history)
-#   - RTU_END_DATE: when factors will cease (weather forecast)
-# No cross-dependencies between steps. All outputs merged in YAML.
+# Step 3 (Synthesis): Read-only — applies philosophical lens to synthesize TODAYS_WISDOM
+# Step 4: Merge all outputs in YAML with todays_wisdom first
 
 ---
