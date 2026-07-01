@@ -1,74 +1,51 @@
-# Vedic Daily Output — Refactored Architecture (2026-07-01)
-# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/Deshacharya via ritu-determination.md)
-# Architecture: Both steps independent, merged in Step 3
+# Vedic Daily Output — 2026-07-01
+# Generated from: Step 1 (Panchang/BPHS) + Step 2 (Rtu/ritu-determination.md protocol)
+# Both steps independent, merged in YAML
 
 ---
 
-# ============ STEP 1: PANCHANG (Jyotish / BPHS) ============
-# Astronomical data from ephem library + Lahiri ayanamsha
-# Output namespace: PANCHANG_*
+# ============ PANCHANG (Jyotish / BPHS) ============
+date: "2026-07-01"
+date_display: "Wednesday, July 01, 2026"
+day_num: 3
+day_san: "Budhavara"
+lord: "Budha/Vata"
+sunrise: "5:53 AM"
+sunset: "6:53 PM"
+moonrise: "8:01 PM"
+rahu: "12:23 PM–2:00 PM"
+yama: "7:30 AM–9:08 AM"
+gulika: "10:45 AM–12:23 PM"
+abhijit: "11:59 AM–12:47 PM"
+surya_rashi: "Mithuna"
+surya_effect: "Budha's domain — Mithuna: communication, intellect, writing. Vata aggravation in Grisma; grounding advised."
+tithi: "Purnima/Amavasya (2)"
+paksha: "Krishna Paksha"
+nakshatra: "Uttara Ashadha"
+chandra_effect: "Purva Ashadha — invincibility, mystery. Waning phase: introspection, preparation. Krishna Paksha: inward focus, completion cycles. Avoid major external initiatives."
+days_to_full: 29
+days_to_new: 14
 
-panchang:
-  date_ymd: "2026-07-01"
-  date_display: "Wednesday, July 01, 2026"
-  day_num: 3
-  day_san: "Budhavara"
-  lord: "Budha/Vata"
-  sunrise: "5:53 AM"
-  sunset: "6:53 PM"
-  moonrise: "8:01 PM"
-  rahu: "12:23 PM–2:00 PM"
-  yama: "7:30 AM–9:08 AM"
-  gulika: "10:45 AM–12:23 PM"
-  abhijit: "11:59 AM–12:47 PM"
-  surya_rashi: "Mithuna"
-  surya_effect: "Budha's domain — Mithuna: communication, intellect, writing. Vata aggravation in Grisma; grounding advised."
-  tithi: "Purnima/Amavasya (2)"
-  paksha: "Krishna Paksha"
-  nakshatra: "Uttara Ashadha"
-  chandra_effect: "Purva Ashadha — invincibility, mystery. Waning phase: introspection, preparation. Krishna Paksha: inward focus, completion cycles. Avoid major external initiatives."
-  days_to_full: 29
-  days_to_new: 14
+# ============ RTU (Ayurveda / ritu-determination.md protocol) ============
+rtu: "Varsha"
+rtu_phase: "Arambha"
+agni_state: "Vishama"
+rtu_confidence: "High"
+temp_c: 25.0
+humidity_pct: 67
+wind_degrees: 256
+rainy_days_14: 17
+rtu_match_score: "4/4"
+deshacharya_note: "Live weather matches Varsha: temp✓(25.0°C in 15-26), humidity✓(67% in 65-90), rain✓(17 days >5), wind✓(256° SW monsoon)"
 
-# ============ STEP 2: RTU (Ayurveda / Ashtanga Hridayam) ============
-# Weather-based seasonal determination via ritu-determination.md protocol
-# Output namespace: RTU_*
-# Weather source: Open-Meteo API (live data)
+# Dosha effects (from Varsha conditions)
+vata_effect: "Varsha dampness (67% humidity, 17 rainy days) pacifies Vata's dryness; grounding practices still beneficial."
+pitta_effect: "Varsha cooling (25.0°C, monsoon rains) pacifies Pitta naturally; light digestive support suits the season."
+kapha_effect: "Varsha humidity peak (67%) aggravates Kapha significantly; warm, dry, light foods and active practices essential."
 
-rtu:
-  rtu: "Varsha"
-  phase: "Arambha"
-  agni_state: "Vishama"
-  confidence: "High"
-  
-  # Weather data (source: Open-Meteo, 2026-07-01)
-  temp_c: 24.8
-  humidity_pct: 68
-  wind_degrees: 255
-  rainy_days_14: 17
-  
-  # Ritu-determination matching results
-  match_score: "4/4"
-  matching_factors: "temp✓(24.8°C in 15-26), humidity✓(68% in 65-90), rain✓(17 days >5), wind✓(255° SW monsoon)"
-  deshacharya_note: "Live weather confirms Varsha: monsoon active, high humidity, SW winds, 17 rainy days. Calendar month (July/Ashadha) aligns."
-  
-  # Ritu seasonal dates (approximate for Bangalore)
-  rtu_start_date: "2026-06-15"
-  rtu_end_date: "2026-09-15"
-  
-  # Dosha effects — generated from Varsha conditions
-  vata_effect: "Varsha dampness and high humidity (68%, 17 rainy days) pacify Vata's dryness; grounding practices still essential but less urgent."
-  pitta_effect: "Varsha cooling rains (17 days, 24.8°C) pacify Pitta nicely; light digestive support and bitter tastes support. No aggressive cooling needed."
-  kapha_effect: "Varsha humidity peak (68%) and moisture aggravate Kapha significantly; stimulate digestion with warm, dry, light foods and active practices."
-
-# ============ ARCHITECTURE NOTE ============
-# Step 1 & Step 2 are COMPLETELY INDEPENDENT
-# - Step 1: Runs ephem calculations (orbital mechanics) → PANCHANG_*
-# - Step 2: Runs ritu-determination.md protocol (weather validation) → RTU_*
-# - Step 3: Merges outputs → Unified daily note frontmatter
-# 
-# No data flows between steps. Each is a separate domain:
-# - Jyotish (panchang) for spiritual timing & planetary energy
-# - Ayurveda (rtu) for practical health guidance based on season/weather
+# Architecture note
+# Step 1 (Panchang) independent: ephem library, BPHS authority
+# Step 2 (Rtu) independent: Open-Meteo API + ritu-determination.md protocol
+# No data flows between steps. Merge outputs in YAML only.
 
 ---
